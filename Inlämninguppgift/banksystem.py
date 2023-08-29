@@ -22,7 +22,7 @@ class Customer:
         return f"Customer({self.birthday})"
     
     def assign_random_birthday(self):
-        birthday_date = random.datetime("%Y, %b,%d")
+        birthday_date = random.datetime("%Y- %b-%d")
         self.birthday = f"{birthday_date}"
 
     def find_customer_by_birthdate(customers:list [Customer],
