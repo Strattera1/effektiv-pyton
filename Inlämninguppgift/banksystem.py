@@ -22,7 +22,7 @@ class Customer:
         return f"Customer({self.birthday})"
     
     def assign_random_birthday(self):
-        birthday_date = random.datetime("%Y- %b-%d")
+        birthday_date = datetime.random("%Y- %b-%d")
         self.birthday = f"{birthday_date}"
 
 def find_customer_by_birthdate(customers:list [Customer],
@@ -57,4 +57,6 @@ if __name__ == "__main__":
     user_2_sublist.append(user_2)
 
     start = time()
-    result_user = find_customer_by_birthdate(customers, )
+    result_user = find_customer_by_birthdate(customers, datetime.datetime(1992,5,25))
+    end = time()
+    print(result_user, f"took {end - start} seconds to find")
