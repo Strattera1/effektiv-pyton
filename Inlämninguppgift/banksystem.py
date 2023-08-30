@@ -25,7 +25,7 @@ class Customer:
         birthday_date = random.datetime("%Y- %b-%d")
         self.birthday = f"{birthday_date}"
 
-    def find_customer_by_birthdate(customers:list [Customer],
+def find_customer_by_birthdate(customers:list [Customer],
                                    birthday:str) -> Customer or None:
         search_area= get_sublist_of_birthday(customers,birthday)
         for customer in search_area:
@@ -33,19 +33,28 @@ class Customer:
                 return customer
         return None
     
-    def get_sublist_of_birthday(customers: list [list[Customer]],
+def get_sublist_of_birthday(customers: list [list[Customer]],
                                 birthday_date: str) -> list[Customer]:
         return customers[alphabet.index(birthday_date[0])]
     
-    if __name__ == "__main__":
-        customers = []
-        for letter in alphabet:
-            customers.append([])
+if __name__ == "__main__":
+    customers = []
+    for letter in alphabet:
+        customers.append([])
 
-        for i in range (10 ** 5):
-            customer = Customer()
+    for i in range (10 ** 5):
+        customer = Customer()
 
-            customer_sublist = get_sublist_of_birthday(customers, customers.birthday_date)
-            customer_sublist.append(customer)
-        
-        user = Customer(birthday = "1992 may 25")
+        customer_sublist = get_sublist_of_birthday(customers, customers.birthday_date)
+        customer_sublist.append(customer)
+    
+    user = Customer(birthday = datetime.datetime(1992,5,25))
+    user_sublist = get_sublist_of_birthday(customers, user.birthday_date)
+    user_sublist.append(user)
+
+    user_2 = Customer(birthday=datetime.datetime(1972,12,14))
+    user_2_sublist = get_sublist_of_birthday(customers, user_2.birthday_date)
+    user_2_sublist.append(user_2)
+
+    start = time()
+    result_user = find_customer_by_birthdate(customers, )
