@@ -7,56 +7,67 @@ alphabet = ("A", "B", "C", "D", "E", "F",
             "M", "N", "O", "P", "Q", "R",
             "S", "T", "U", "V", "W", "X", 
             "Y", "Z")
+DOB = (
+     datetime.date(1992,1,1),
+     datetime.date(1938,12,14),
+     datetime.date(1972,3,15)
+)
 
+# Behöver fixa till kononummer systemet. Nummern ska gå ner i sekvens ordning. 
 # Börja med att skapa en random födelsdag lista
 
 class Customer:
 
-    def __init__(self, birthday:str = None):
-        if birthday is None:
-            self.assign_random_birthday()
-        else:
-            self.birthday = birthday
+    def __init__(self,created,last_updated,name, birthday, account_number, saldo):
+        self.created = datetime.datetime.now()
+        self.last_updated = datetime.datetime.now()
+        self.name = name
+        self.birthday= birthday
+        self.account_number= account_number
+        self.saldo = saldo
     
     def __repr__(self) -> str:
         return f"Customer({self.birthday})"
     
     def assign_random_birthday(self):
-        birthday_date = datetime.random("%Y- %b-%d")
-        self.birthday = f"{birthday_date}"
+        #birthday_date = datetime.now("%Y %m %D")
+        self.birthday = random.choice(DOB)
 
-def find_customer_by_birthdate(customers:list [Customer],
-                                   birthday:str) -> Customer or None:
-        search_area= get_sublist_of_birthday(customers,birthday)
-        for customer in search_area:
-            if customer.birthday == birthday:
-                return customer
-        return None
+    def get_account_number(self,end,prefix = "1111-"):
+        self.account_number = []
+        for i in range (start,end + 1):
+              self.account_number = f"{prefix}{i:010}"
+              self.account_number.append(self.account_number)
+        return self.account_number
+        
+    def birthday(birthday):
+        year = birthday(random.randint(1922,2000))
+        month = birthday(random.randint(1,12))
+        day = birthday(random.randint(1,31))
+        if month == 2:
+            day= random.randint(1,28)
+        elif month == 4 and month == 6 and month == 9 and month == 11:
+            day = random.randint(1,30)
+        else:
+            day = random.randint(1,31)
+        return year, month,day 
     
-def get_sublist_of_birthday(customers: list [list[Customer]],
-                                birthday_date: str) -> list[Customer]:
-        return customers[alphabet.index(birthday_date[0])]
+# def get_sublist_of_birthday(customers: list [list[Customer]],
+#                                 birthday_date: str) -> list[Customer]:
+#         return customers[alphabet.index(birthday_date[0])]
+
     
 if __name__ == "__main__":
     customers = []
     for letter in alphabet:
         customers.append([])
 
-    for i in range (10 ** 5):
+    for i in range (10 ** 7):
         customer = Customer()
+        Customer(created=)
 
-        customer_sublist = get_sublist_of_birthday(customers, customers.birthday_date)
-        customer_sublist.append(customer)
-    
-    user = Customer(birthday = datetime.datetime(1992,5,25))
-    user_sublist = get_sublist_of_birthday(customers, user.birthday_date)
-    user_sublist.append(user)
-
-    user_2 = Customer(birthday=datetime.datetime(1972,12,14))
-    user_2_sublist = get_sublist_of_birthday(customers, user_2.birthday_date)
-    user_2_sublist.append(user_2)
 
     start = time()
-    result_user = find_customer_by_birthdate(customers, datetime.datetime(1992,5,25))
+
     end = time()
-    print(result_user, f"took {end - start} seconds to find")
+    print(, f"took {end - start} seconds to find")
