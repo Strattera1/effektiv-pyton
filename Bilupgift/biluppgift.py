@@ -63,7 +63,7 @@ if __name__== "__main__":
     
 
     start  = time()
-    result_car = get_car_by_license_plate(cars, "ASS432")
+    result_car = get_car_by_license_plate(cars, "BBB123")
     end = time()
     print ("Search result", result_car)
 
