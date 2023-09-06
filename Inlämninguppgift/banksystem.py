@@ -13,13 +13,15 @@ import datetime
 #      datetime.date(1972,3,15)
 # )
 
-# Behöver fixa till kononummer systemet. Nummern ska gå ner i sekvens ordning. 
+# Den hämtar sifforna två gånger. 
 # Börja med att skapa en random födelsdag lista
 def get_account_number(start,end,prefix = "1111-"):
     account_numbers = []
+    start = 1
+    end = 10 **7
     for i in range (start,end + 1):
-            account_number = f"{prefix}{i:010}"
-            account_numbers.append(account_number)
+            account_number = f"{prefix}{i :010d}"
+            account_numbers.append(start,end,account_number)
     return account_numbers
 class Customer:
 
@@ -34,14 +36,14 @@ class Customer:
         self.last_updated = self.account_last_updated(datetime)
         self.name = self.customer_name(str)
         self.birthday= self.customer_birthday(int)
-        self.account_number= account_number
+        self.account_number= f"{i:010d}{account_number}"
         self.saldo = self.balance(saldo)
         
 
     
     
     def __repr__(self) -> str:
-        return f"Customer(Account Number: {self.account_number}, Name: {self.name}:{self.saldo}:{self.birthday})"
+        return f"Customer(Account Number: {self.account_number}, Name: {self.name})"
     
 
 
@@ -111,7 +113,7 @@ if __name__ == "__main__":
     #     customer = Customer(created=any ,last_updated=datetime,name=str,birthday=int,account_number=str,saldo=int)
     #     customers.append(customer)
     start = time()    
-    for i in range(10**4):
+    for i in range(10**3):
         customer = Customer(account_number=i, name=str, birthday=int, saldo=int)
         customers.append(customer)
     end = time()
@@ -119,9 +121,3 @@ if __name__ == "__main__":
     for i in customers:
         print(i)
     print(f"this is how long it took to create customer{elapsed_time_for_creating_customers}")
-
-    # for customer_result in customers:
-    #     start = time()
-    #     customer_result = [customers[10000]]
-    #     end = time()
-    # print( customer_result[0], f"took {end - start} seconds to find")
