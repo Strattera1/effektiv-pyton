@@ -2,49 +2,9 @@
 import random
 from time import time, sleep
 import datetime
-# alphabet = ("A", "B", "C", "D", "E", "F",
-#             "G", "H", "I", "J", "K", "L",
-#             "M", "N", "O", "P", "Q", "R",
-#             "S", "T", "U", "V", "W", "X", 
-#             "Y", "Z")
-# DOB = (
-#      datetime.date(1992,1,1),
-#      datetime.date(1938,12,14),
-#      datetime.date(1972,3,15)
-# )
+
 
 # Den hämtar sifforna två gånger. 
-# Börja med att skapa en random födelsdag lista
-def get_account_number(start,end,prefix = "1111-"):
-    account_numbers = []
-    start = 1
-    end = 10 **7
-    for i in range (start,end + 1):
-            account_number = f"{prefix}{i :010d}"
-            account_numbers.append(start,end,account_number)
-    return account_numbers
-class Customer:
-
-    def __init__(self,name:str, birthday:int, account_number:str or None, saldo:int):
-        # self.created = created
-        # self.last_updated = last_updated
-        # self.name = name
-        # self.birthday= birthday
-        # self.account_number= account_number
-        # self.saldo = saldo
-        self.created = self.account_created(time)
-        self.last_updated = self.account_last_updated(datetime)
-        self.name = self.customer_name(str)
-        self.birthday= self.customer_birthday(int)
-        self.account_number= f"{i:010d}{account_number}"
-        self.saldo = self.balance(saldo)
-        
-
-    
-    
-    def __repr__(self) -> str:
-        return f"Customer(Account Number: {self.account_number}, Name: {self.name})"
-    
 
 
 
@@ -55,6 +15,28 @@ class Customer:
     #         account_number = f"1111-{total_zero}{last_account_number: 010d}"
             
     #     return account_number
+
+
+
+#Kan ej ha funktionen inne i klassen.Den måste vara utanför. 
+#Verkar som att jag inte kallar på funktionen någonstans. behövs fixa. 
+class Customer:
+
+    def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
+        self.created = self.account_created(time)
+        self.last_updated = self.account_last_updated(datetime)
+        self.name = self.customer_name(str)
+        self.birthday= self.customer_birthday(int)
+        self.account_number= f"111-{account_number:010d}"
+        self.saldo = self.balance()
+
+    
+    
+    def __repr__(self) -> str:
+        return f"Customer(Account Number: {self.account_number}, Name: {self.name})"
+    
+
+
 
         
     def customer_birthday(self,birthday):
@@ -103,15 +85,8 @@ def get_sublist_of_accounts( customers: list[list[Customer]]
     return customers(account_number[0])
         
 
-    
 if __name__ == "__main__":
     customers = []
-    # for letter in alphabet:
-    #     customers.append([])
-
-    # for i in range (10 ** 7):
-    #     customer = Customer(created=any ,last_updated=datetime,name=str,birthday=int,account_number=str,saldo=int)
-    #     customers.append(customer)
     start = time()    
     for i in range(10**3):
         customer = Customer(account_number=i, name=str, birthday=int, saldo=int)
