@@ -4,22 +4,10 @@ from time import time, sleep
 import datetime
 
 
-# Den hämtar sifforna två gånger. 
 
 
-
-    # def get_account_number(account_number, i):
-    #     total_zero = "0000000000"
-    #     for last_account_number in range (1,100000001):
-    #         total_zero = total_zero[len(total_zero) - len(str(last_account_number)) + 1]
-    #         account_number = f"1111-{total_zero}{last_account_number: 010d}"
-            
-    #     return account_number
-
-
-
-#Kan ej ha funktionen inne i klassen.Den måste vara utanför. 
-#Verkar som att jag inte kallar på funktionen någonstans. behövs fixa. 
+# Nästan klar med version 1. Behöver fixa så att konton kan upptäckas.
+# problemet verkar ligga i rad 82. 
 class Customer:
 
     def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
@@ -27,20 +15,19 @@ class Customer:
         self.last_updated = self.account_last_updated(datetime)
         self.name = self.customer_name(str)
         self.birthday= self.customer_birthday(int)
-        self.account_number= f"111-{account_number:010d}"
-        self.saldo = self.balance()
+        self.account_number= f"1111-{account_number:010d}"
+        self.saldo = self.balance(int)
 
     
     
     def __repr__(self) -> str:
-        return f"Customer(Account Number: {self.account_number}, Name: {self.name})"
+        return f"Customer(Account Number: {self.account_number}, Name: {self.name}, Birthday {self.birthday},\n\n Saldo: {self.saldo}, Created: {self.created}, Last Uppdated: {self.last_updated} )"
     
 
 
 
         
     def customer_birthday(self,birthday):
-        self.birthday = []
         year = birthday(random.randint(1922,2000))
         month = birthday(random.randint(1,12))
         day = birthday(random.randint(1,31))
@@ -58,41 +45,57 @@ class Customer:
         return time()
     
     def account_last_updated(self,last_updated):
-        self.last_updated = []
         last_updated = datetime.datetime.now()
         return last_updated
     
     def customer_name(self,name):
-        self.name = []
-        name = f"Customer{i+ 1}"
+        name = f"Customer{i}"
         return name
     
     def balance(self,saldo):
-        self.saldo = []
-        saldo == f"{random.randint(1,40000)}"
+        saldo = random.randint(1,40000)
         return saldo
     
 def find_account(customers:list[Customer],
-                account_number: str ) -> Customer or None:
-    search_area = get_sublist_of_accounts(customers,account_number)
-    for customer in search_area:
+                 account_number:str) -> Customer or None:
+    if len(account_number) != 15:
+        print ("account number is incorrect format.")
+        return None
+    for customer in customers:
         if customer.account_number == account_number:
             return customer
     return None
 
-def get_sublist_of_accounts( customers: list[list[Customer]]
-                            ,account_number:str) -> Customer:
-    return customers(account_number[0])
+
         
 
 if __name__ == "__main__":
+
+
     customers = []
     start = time()    
-    for i in range(10**3):
+    for i in range(10**7):
         customer = Customer(account_number=i, name=str, birthday=int, saldo=int)
         customers.append(customer)
+
+
+
     end = time()
     elapsed_time_for_creating_customers = end - start
-    for i in customers:
-        print(i)
-    print(f"this is how long it took to create customer{elapsed_time_for_creating_customers}")
+
+    print(f"this is how long it took to create customers: {elapsed_time_for_creating_customers} seconds elsapsed")
+
+    start = time()
+    result_account1 = find_account(customers,account_number="1111-0000500000")
+    end = time()
+    print ("result: ",result_account1, f" seconds to find {end-start}")
+
+    start = time()
+    result_account2 = find_account(customers,account_number="1111-0009999999")
+    end= time()
+    print ("result: ",result_account2, f" seconds to find {end-start}")
+    
+    start = time()
+    result_account3 = find_account(customers,account_number="1111-9999999999")
+    end = time()
+    print ("result: ",result_account3, f" seconds to find {end-start}")
