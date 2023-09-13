@@ -6,8 +6,6 @@ import datetime
 
 
 
-# Nästan klar med version 1. Behöver fixa så att konton kan upptäckas.
-# problemet verkar ligga i rad 82. 
 class Customer:
 
     def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
@@ -21,7 +19,7 @@ class Customer:
     
     
     def __repr__(self) -> str:
-        return f"Customer(Account Number: {self.account_number}, Name: {self.name}, Birthday {self.birthday},\n\n Saldo: {self.saldo}, Created: {self.created}, Last Uppdated: {self.last_updated} )"
+        return f"Customer( Account Number: {self.account_number}, Name: {self.name}, Birthday {self.birthday},\n\n Saldo: {self.saldo}, Created: {self.created}, Last Uppdated: {self.last_updated} )"
     
 
 
@@ -98,4 +96,4 @@ if __name__ == "__main__":
     start = time()
     result_account3 = find_account(customers,account_number="1111-9999999999")
     end = time()
-    print ("result: ",result_account3, f" seconds to find {end-start}")
+    print ("result: ",result_account3, f" seconds to find {end-start}, account does not exist.")
