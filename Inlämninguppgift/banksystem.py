@@ -5,7 +5,8 @@ import datetime
 
 
 
-
+# Vad som ska göras i version 2: 
+# Ändra så att det blir en dict istället för en list och använd mig av list Comprehension. 
 class Customer:
 
     def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
@@ -54,6 +55,8 @@ class Customer:
         saldo = random.randint(1,40000)
         return saldo
     
+    
+    
 def find_account(customers:list[Customer],
                  account_number:str) -> Customer or None:
     if len(account_number) != 15:
@@ -84,7 +87,7 @@ if __name__ == "__main__":
     print(f"this is how long it took to create customers: {elapsed_time_for_creating_customers} seconds elsapsed")
 
     start = time()
-    result_account1 = find_account(customers,account_number="1111-0000500000")
+    result_account1 = find_account(customers,account_number="1111-0000001000")
     end = time()
     print ("result: ",result_account1, f" seconds to find {end-start}")
 

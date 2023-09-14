@@ -2,6 +2,7 @@
 #i oändlighet. Dra i snöret i en for-loop eller liknande, som har ett slut (ingen evighetsloop)
 from dataclasses import dataclass
 from barnum import gen_data
+from typing import Iterator
 
 # def modulus_ten(stop):
 #     num = 1
@@ -33,9 +34,18 @@ from barnum import gen_data
 #                 yield(bilar.strip())
 # # for x in find_car_in_list_with_three_a("bilar.txt"):
 # #     print(x)
-def create_fake_person(name:str):
-      with open("fake_person.csv", "a+") as file:
-        file.write(name)
-for x in create_fake_person(10):
-    x(gen_data.create_name())
+# def create_fake_person(name:str):
+#       with open("fake_person.csv", "a+") as file:
+#         file.write(name)
+# for x in create_fake_person(10):
+#     x(gen_data.create_name())
+
+@dataclass
+class Person:
+    name: str
+    job_title:str
+    age:int
+    city: str
+
+
     
