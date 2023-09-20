@@ -9,13 +9,13 @@ import datetime
 # Ändra så att det blir en dict istället för en list och använd mig av list Comprehension. 
 class Customer:
 
-    def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
-        self.created = self.account_created(time)
-        self.last_updated = self.account_last_updated(datetime)
-        self.name = self.customer_name(str)
-        self.birthday= self.customer_birthday(int)
-        self.account_number= f"1111-{account_number:010d}"
+    def __init__(self,name:str, birthday:datetime.date, account_number :str, saldo:int):
+        self.account_number= account_number
+        self.name = self.customer_name(name)
+        self.birthday = birthday
         self.saldo = self.balance(int)
+        self.created = time()
+        self.last_updated = self.account_last_updated(datetime)
 
     
     
