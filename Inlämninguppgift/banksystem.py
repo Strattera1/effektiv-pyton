@@ -20,7 +20,7 @@ class Customer:
     
     
     def __repr__(self) -> str:
-        return f"Customer( Account Number: {self.account_number}, Name: {self.name}, Birthday {self.birthday},\n\n Saldo: {self.saldo}, Created: {self.created}, Last Uppdated: {self.last_updated} )"
+        return f"Customer( Account Number: {self.account_number})"
     
 
 
