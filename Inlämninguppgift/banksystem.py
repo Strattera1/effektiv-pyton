@@ -24,31 +24,13 @@ class Customer:
     
 
 
-
-        
-    def customer_birthday(self,birthday):
-        year = birthday(random.randint(1922,2000))
-        month = birthday(random.randint(1,12))
-        day = birthday(random.randint(1,31))
-        if month == 2:
-            day= random.randint(1,28)
-        elif month == 4 and month == 6 and month == 9 and month == 11:
-            day = random.randint(1,30)
-        else:
-            day = random.randint(1,31)
-        return year, month,day 
-    
-    def account_created(self,created):
-        # self.created = []
-        # created = datetime.datetime.now()
-        return time()
     
     def account_last_updated(self,last_updated):
         last_updated = datetime.datetime.now()
         return last_updated
     
     def customer_name(self,name):
-        name = f"Customer{i}"
+        name = f"Customer{name}"
         return name
     
     def balance(self,saldo):
@@ -68,15 +50,23 @@ def find_account(customers:list[Customer],
     return None
 
 
-        
+def get_customer_birthday() -> datetime.date:
+    year = random.randint(1922,2000)
+    month = random.randint(1,12)
+    day = random.randint(1,28)
+    return datetime.date(year, month,day)
+
+
+def format_account_number(count:int)-> str:
+    return f"1111-{count:010d}"
 
 if __name__ == "__main__":
 
-
+    milseconds = 1000
     customers = []
     start = time()    
     for i in range(10**7):
-        customer = Customer(account_number=i, name=str, birthday=int, saldo=int)
+        customer = Customer(account_number=format_account_number(i), name=i, birthday=get_customer_birthday, saldo=int)
         customers.append(customer)
 
 
@@ -85,18 +75,32 @@ if __name__ == "__main__":
     elapsed_time_for_creating_customers = end - start
 
     print(f"this is how long it took to create customers: {elapsed_time_for_creating_customers} seconds elsapsed")
-
-    start = time()
-    result_account1 = find_account(customers,account_number="1111-0000001000")
-    end = time()
-    print ("result: ",result_account1, f" seconds to find {end-start}")
-
-    start = time()
-    result_account2 = find_account(customers,account_number="1111-0009999999")
-    end= time()
-    print ("result: ",result_account2, f" seconds to find {end-start}")
     
-    start = time()
-    result_account3 = find_account(customers,account_number="1111-9999999999")
-    end = time()
-    print ("result: ",result_account3, f" seconds to find {end-start}, account does not exist.")
+    
+    total_time_1 = 0
+    for i in range (milseconds):
+        start = time()
+        result_account1 = find_account(customers,account_number="1111-0000001000")
+        end = time()
+        total_time_1 += (end-start)
+    result_time_1 = total_time_1/milseconds
+    print ("result: ",result_account1, f" ms to find {result_time_1:.5f}{result_time_1 * 1000:.2f}")
+
+
+    total_time_2 = 0
+    for i in range (milseconds):
+        start = time()
+        result_account2 = find_account(customers,account_number="1111-0009999999")
+        end= time()
+        total_time_2 += (end-start)
+    result_time_2 = total_time_1/milseconds
+    print ("result: ",result_account2, f" ms to find {result_time_2:.5f}{result_time_2 * 1000:.2f}")
+    
+    total_time_3 = 0
+    for i in range (milseconds):
+        start = time()
+        result_account3 = find_account(customers,account_number="1111-9999999999")
+        end = time()
+        total_time_3 += (end-start)
+    result_time_3 = total_time_1/milseconds
+    print ("result: ",result_account3, f" ms to find  {result_time_3:.5f}{result_account3 * 1000:2f}, account does not exist.")
