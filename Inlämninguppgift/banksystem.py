@@ -25,17 +25,6 @@ class Customer:
 
 
         
-    def customer_birthday(self,birthday):
-        year = birthday(random.randint(1922,2000))
-        month = birthday(random.randint(1,12))
-        day = birthday(random.randint(1,31))
-        if month == 2:
-            day= random.randint(1,28)
-        elif month == 4 and month == 6 and month == 9 and month == 11:
-            day = random.randint(1,30)
-        else:
-            day = random.randint(1,31)
-        return year, month,day 
     
     def account_created(self,created):
         # self.created = []
@@ -64,7 +53,11 @@ def find_account(customers:list[Customer],
             return customer
     return None
 
-
+def get_customer_birthday() -> datetime.date:
+    year = random.randint(1922,2000)
+    month = random.randint(1,12)
+    day = random.randint(1,28)
+    return datetime.date(year, month,day)
         
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 from countries import Country,countries
+import dataclasses as dataclasses
 #Labb1
 population_between_8m_12m = [p for p in countries if p.Population > 8000000 and p.Population < 12000000]
 
@@ -23,7 +24,7 @@ for x in population_between_8m_12m:
 #4. Skapa en lista med alla länder som där man pratar English
 # Skriv ut namn och capital för varje 
 
-english_country = [p for p in countries if p.Langages == ["English"]]
+# english_country = [p for p in countries if p.Langages == ["English"]]
 
 # for x in english_country:
 #     print(f"Country: {x.Namn} \n Capital: {x.Capital} \n Lagagues{x.Langages}")
@@ -31,12 +32,15 @@ english_country = [p for p in countries if p.Langages == ["English"]]
 #5. Skapa en lista med FÖRSTA BOKSTAVEN för alla capitals
 #  länder som med population mindre än 1000000.  Skriv ut listan i formatet (ex "VAVRST" om det är 6 stycken etc)
 
-population_first_letter_capital = [p.Capital[0] for p in countries if p.Population > 1000000]
+# population_first_letter_capital = [p.Capital[0] for p in countries if p.Population > 1000000]
 
-print(*population_first_letter_capital)
+# print(*population_first_letter_capital)
 
 
 #6. Skapa en lista som i list comprehension omvandlar alla numeriska karaktärer
 #  i en sträng till int ( Tips! Python har inbyggd metod för att se om en sträng är numerisk eller alfabetisk! =) ) Finns inga siffror blir listan tom.
 
 #if_int = [i for i in countries if  ]
+
+if_int = [int(i) for i in countries if i.isdigt]
+print (*if_int)
