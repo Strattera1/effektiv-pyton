@@ -8,18 +8,18 @@ import datetime
 
 class Customer:
 
-    def __init__(self,name:str, birthday:int, account_number :str, saldo:int):
-        self.created = self.account_created(time)
-        self.last_updated = self.account_last_updated(datetime)
-        self.name = self.customer_name(str)
-        self.birthday= self.customer_birthday(int)
-        self.account_number= f"1111-{account_number:010d}"
+    def __init__(self,name:str, birthday:datetime.date, account_number :str, saldo:int):
+        self.account_number= account_number
+        self.name = self.customer_name(name)
+        self.birthday = birthday
         self.saldo = self.balance(int)
+        self.created = time()
+        self.last_updated = self.account_last_updated(datetime)
 
     
     
     def __repr__(self) -> str:
-        return f"Customer( Account Number: {self.account_number}, Name: {self.name}, Birthday {self.birthday},\n\n Saldo: {self.saldo}, Created: {self.created}, Last Uppdated: {self.last_updated} )"
+        return f"Customer( Account Number: {self.account_number})"
     
 
 
