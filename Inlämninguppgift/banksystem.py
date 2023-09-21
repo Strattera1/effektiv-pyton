@@ -58,7 +58,9 @@ def get_customer_birthday() -> datetime.date:
     month = random.randint(1,12)
     day = random.randint(1,28)
     return datetime.date(year, month,day)
-        
+
+def format_account_number(count:int)-> str:
+    return f"1111-{count:010d}"  
 
 if __name__ == "__main__":
 
@@ -66,7 +68,7 @@ if __name__ == "__main__":
     customers = []
     start = time()    
     for i in range(10**7):
-        customer = Customer(account_number=i, name=str, birthday=int, saldo=int)
+        customer = Customer(account_number=format_account_number(i), name=i, birthday=get_customer_birthday, saldo=int)
         customers.append(customer)
 
 
