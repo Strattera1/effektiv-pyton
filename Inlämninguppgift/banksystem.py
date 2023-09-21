@@ -4,7 +4,7 @@ from time import time, sleep
 import datetime
 from dataclasses import dataclass
 
-@dataclass
+
 class Customer:
 
     def __init__(self,name:str, birthday:datetime.date, account_number :str, saldo:int):
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     start = time()
     customer_dict= {
         format_account_number(i): Customer(account_number=format_account_number(i),
-                                            name=i,birthday=get_customer_birthday(), saldo=0) for  i in range(10**7)
+                                            name=i,birthday=get_customer_birthday(), saldo=0) for  i in range(10**5)
         }  
       
     
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     total_time_2 = 0
     for m in range(milseconds):
         start = time()
-        result_account2 = find_account(customer_dict,account_number="1111-0009999999")
+        result_account2 = find_account(customer_dict,account_number="1111-0000099999")
         end = time()
         total_time_2 += (end-start)
     result_time_2 = total_time_1/milseconds
