@@ -5,8 +5,6 @@ import datetime
 
 
 
-# Vad som ska göras i version 2: 
-# Ändra så att det blir en dict istället för en list och använd mig av list Comprehension. 
 class Customer:
 
     def __init__(self,name:str, birthday:datetime.date, account_number :str, saldo:int):
