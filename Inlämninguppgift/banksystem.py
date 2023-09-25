@@ -59,16 +59,6 @@ def format_account_number(count)-> str:
     return f"1111-{count:010d}"
     
 
-# def selection_sort(customers_list) -> None:
-#     n = len(customers_list)
-#     for i in range(n):
-#         min_vaule = i
-#         for j  in range (i + 1,n):
-#             if customers_list[j].account_number < customers_list[min_vaule].account_number:
-#                 min_vaule = j
-#         customers_list[i],customers_list[min_vaule] = customers_list[min_vaule], customers_list[i]
-
-
 
 if __name__ == "__main__":
 
